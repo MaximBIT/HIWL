@@ -2,7 +2,7 @@
     "name": "hiwl",
     "version": "1.9.8",
     "main": "src/hiwl.js",
-    "license": "MIT",
+    "license": "The Unlicense",
     "author": "MaxBIT",
     "description": "Health Increases With Level",
     "akiVersion": "*",
