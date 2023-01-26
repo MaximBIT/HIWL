@@ -10,10 +10,7 @@ import { PreAkiModLoader } from "@spt-aki/loaders/PreAkiModLoader";
 import { VFS } from "@spt-aki/utils/VFS";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-// import { HealthController} from "@spt-aki/controllers/HealthController";
-// import https from "https";
 import { ISyncHealthRequestData, Health } from "@spt-aki/models/eft/health/ISyncHealthRequestData";
-// import { IPmcData } from "@spt-aki/models/eft/common/IPmcData";
 
 class HIWL implements IPreAkiLoadMod, IPostDBLoadMod {
 
@@ -33,14 +30,11 @@ class HIWL implements IPreAkiLoadMod, IPostDBLoadMod {
     private logger: ILogger;
     private reservefile: { [x: string]: { Health: { Current: any, Maximum: any; }; }; };
     private modPath: string = "user/mods/HIWL";
-    // private healthController: HealthController;
 
     postDBLoad(container: DependencyContainer): void {
         const dbServer = container.resolve<DatabaseServer>("DatabaseServer").getTables().globals;
         this.bodyPart = dbServer.config.Health.ProfileHealthSettings.BodyPartsSettings;
         this.effect = dbServer.config.Health.Effects;
-        // this.healthController = container.resolve<HealthController>("HealthController");
-        // this.Update();
     }
 
     preAkiLoad(container: DependencyContainer): void {
@@ -62,8 +56,6 @@ class HIWL implements IPreAkiLoadMod, IPostDBLoadMod {
                             bodyP[eachPart].Health.Maximum = this.reservefile[eachPart].Health.Maximum;
                         }
                     }
-                    // this.Sunc(pHelp.pmcData, info, sessionID);
-                    // /player/health/sync
                 }
                 catch(error) {
                     this.logger.error(error.message);
@@ -99,36 +91,9 @@ class HIWL implements IPreAkiLoadMod, IPostDBLoadMod {
                         const levelScav = pHelp.getScavProfile(sessionID).Info.Level;
                         this.CalculHealth(this.enabledPmc, this.enabledNLPmc, this.nLMultiplierPmc, this.bodyPartsPmc, this.HIWLPmc(this.bodyPartsPmc, levelPmc));
                         this.CalculHealth(this.enabledScav, this.enabledNLScav, this.nLMultiplierScav, this.bodyPartsScav, this.HIWLScav(this.bodyPartsScav, levelScav));
-                        // this.Sunc(pHelp.pmcData, info, sessionID);
                     }
                     catch(error) {
                         this.logger.error(error.message);
-                        // ⠄⠄⠄⠄⠄⠄⠄⠄⠄⣀⣤⣤⣤⣤⣤⣤⣤⣤⣤⣀
-                        // ⠄⠄⠄⠄⠄⠄⣠⡶⠛⠉⠄⠄⠄⠄⠄⠄⠄⠄⠄⠁⠙⢶⣀
-                        // ⠄⠄⠄⠄⢀⡼⠋⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠹⣆
-                        // ⠄⠄⠄⢠⡟⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢹⣆
-                        // ⠄⠄⢀⡟⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢹⣆
-                        // ⠄⠄⣾⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢿
-                        // ⠄⢸⡿⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢸⣇
-                        // ⠄⢸⣷⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢸⣿⡽⣆
-                        // ⠄⠈⣿⡀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢈⣯⠻⢹⡄
-                        // ⠄⠄⢸⡇⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢀⣠⣤⣤⡄⠄⠄⠸⣿⠄⢸⡇
-                        // ⠄⣼⠇⢿⡀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠴⠾⠛⣡⣤⣴⠶⠆⠄⠄⠟⢠⣿⠁
-                        // ⠄⣿⠰⡟⣷⠄⠄⣤⣤⣤⣤⣤⣦⡀⠄⠄⠄⠄⣾⡋⣯⠄⣼⠇⠄⢠⣴⡿⠁
-                        // ⠄⠹⣷⡀⢸⣧⠄⢶⣍⡉⠉⣤⣼⠇⠄⣦⠄⠄⠈⠛⠿⠟⠋⠄⠄⠈⠉
-                        // ⠄⠄⠈⠻⣦⣹⣆⠄⠉⠻⠶⠟⠋⠄⠄⣿⠄⠄⠄⠄⠄⠄⠄⠄⠄⣸⣧⣀
-                        // ⠄⠄⠄⠄⠘⠛⠻⣦⡀⠄⠄⠄⠄⠄⠄⢸⣇⡀⠄⠄⠄⠄⠄⠄⢰⣿⣿⣿⣿⣦
-                        // ⠄⠄⠄⠄⠄⠄⠄⠙⣷⣄⠄⠄⠄⠄⠄⠄⠉⠁⠄⠄⠄⠄⠄⢀⣿⣿⣿⣿⣿⣿
-                        // ⠄⠄⠄⠄⠄⠄⢀⣴⠟⣡⣶⡀⠄⠄⠄⠄⠄⠾⠂⠄⠄⠄⢠⣾⣿⣿⣿⢱⣿⠏
-                        // ⠄⠄⠄⠄⠄⢠⡙⣵⣿⣿⣿⠿⣷⣤⣀⡀⠄⠄⠄⠄⢀⣴⣿⣿⣿⣿⢣⣿⠏⠄
-                        // ⠄⠄⠄⠄⢰⡟⠻⠈⠻⣿⣿⣄⡻⠉⠻⣿⣷⣶⣶⣾⣿⣿⣿⣿⣿⢡⣿⠏⡄⠄
-                        // ⠄⠄⠄⢀⡟⠄⠄⠄⠰⢮⡛⠿⣿⣦⣄⡀⠈⠙⠻⢿⣿⣿⣿⣿⢧⣿⢏⡼⠁⣠
-                        // ⠄⠄⠄⢸⡇⠄⠄⠄⠄⠄⠙⠲⠌⠛⢿⣏⠠⣤⣤⣶⣾⣿⣿⡟⢠⠇⠈⢀⣶⠟
-                        // ⠄⠄⣰⠟⠛⠷⣶⣤⣤⣤⣄⡀⠄⢸⣶⣬⣛⠦⠉⠻⢿⣿⡿⠁⠋⠄⣾⣿⣇⠄
-                        // ⢀⣼⠋⠄⠄⠄⠄⠈⠉⠙⠛⠻⢷⣾⣿⣿⣭⣧⡶⠂⠄⠄⠄⠄⠄⠄⠸⣿⣿⠄
-                        // ⡾⠁⠄⠄⠄⠄⠄⠄⣀⠄⠄⠄⠄⠄⡌⣿⡃⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣿⣿⠄
-                        // ⠄⠄⠄⢀⠄⠄⠄⣼⠇⠄⠄⠄⠄⠄⣷⢻⡇⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠘⣿⡇
-                        // ⣄⠄⠄⠸⡇⠄⣰⠏⠄⠄⠄⠄⠄⠄⢻⣸⡇⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠛⠓
                     }
                 }
                 return output;
@@ -147,25 +112,9 @@ class HIWL implements IPreAkiLoadMod, IPostDBLoadMod {
                         this.bodyPartsScav[eachPart].Health.Maximum = this.bodyPart[eachPart].Default;
                     }
                     this.Debuffs(this.effect, 1);
-                    // this.Sunc(pHelp.pmcData, info, sessionID);
                 }
                 catch(error) {
                     this.logger.error(error.message);
-                    // ⠄⠄⠄⢰⣧⣼⣯⠄⣸⣠⣶⣶⣦⣾⠄⠄⠄⠄⡀⠄⢀⣿⣿⠄⠄⠄⢸⡇⠄⠄
-                    // ⠄⠄⠄⣾⣿⠿⠿⠶⠿⢿⣿⣿⣿⣿⣦⣤⣄⢀⡅⢠⣾⣛⡉⠄⠄⠄⠸⢀⣿⠄
-                    // ⠄⠄⢀⡋⣡⣴⣶⣶⡀⠄⠄⠙⢿⣿⣿⣿⣿⣿⣴⣿⣿⣿⢃⣤⣄⣀⣥⣿⣿⠄
-                    // ⠄⠄⢸⣇⠻⣿⣿⣿⣧⣀⢀⣠⡌⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⣿⣿⣿⠄
-                    // ⠄⢀⢸⣿⣷⣤⣤⣤⣬⣙⣛⢿⣿⣿⣿⣿⣿⣿⡿⣿⣿⡍⠄⠄⢀⣤⣄⠉⠋⣰
-                    // ⠄⣼⣖⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⢇⣿⣿⡷⠶⠶⢿⣿⣿⠇⢀⣤
-                    // ⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣽⣿⣿⣿⡇⣿⣿⣿⣿⣿⣿⣷⣶⣥⣴⣿⡗
-                    // ⢀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠄
-                    // ⢸⣿⣦⣌⣛⣻⣿⣿⣧⠙⠛⠛⡭⠅⠒⠦⠭⣭⡻⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠄
-                    // ⠘⣿⣿⣿⣿⣿⣿⣿⣿⡆⠄⠄⠄⠄⠄⠄⠄⠄⠹⠈⢋⣽⣿⣿⣿⣿⣵⣾⠃⠄
-                    // ⠄⠘⣿⣿⣿⣿⣿⣿⣿⣿⠄⣴⣿⣶⣄⠄⣴⣶⠄⢀⣾⣿⣿⣿⣿⣿⣿⠃⠄⠄
-                    // ⠄⠄⠈⠻⣿⣿⣿⣿⣿⣿⡄⢻⣿⣿⣿⠄⣿⣿⡀⣾⣿⣿⣿⣿⣛⠛⠁⠄⠄⠄
-                    // ⠄⠄⠄⠄⠈⠛⢿⣿⣿⣿⠁⠞⢿⣿⣿⡄⢿⣿⡇⣸⣿⣿⠿⠛⠁⠄⠄⠄⠄⠄
-                    // ⠄⠄⠄⠄⠄⠄⠄⠉⠻⣿⣿⣾⣦⡙⠻⣷⣾⣿⠃⠿⠋⠁⠄⠄⠄⠄⠄⢀⣠⣴
-                    // ⣿⣿⣿⣶⣶⣮⣥⣒⠲⢮⣝⡿⣿⣿⡆⣿⡿⠃⠄⠄⠄⠄⠄⠄⠄⣠⣴⣿⣿⣿
                 }
                 return output;
             }
@@ -234,21 +183,6 @@ class HIWL implements IPreAkiLoadMod, IPostDBLoadMod {
         efft.LightBleeding.Probability.Threshold = +(0.35 / mult).toFixed(3);
         this.logger.info(`${efft.LightBleeding.Probability.Threshold}`);
     }
-
-    // private Update() {
-    //     https.get(`https://hub.sp-tarkov.com/files/file/667-hiwl/`, (res) => {
-    //         res.on("data", () => {
-    //             let chunk = document.getElementsByClassName("filebaseVersionNumber");
-    //             this.logger.info(`${chunk}`);
-    //         });
-    //     }).on("error", (error) => {
-    //         this.logger.error(error.message);
-    //     });
-    // };
-
-    // private Sunc(pmcData: IPmcData, info: ISyncHealthRequestData, sessionID: string) {
-    //     this.healthController.saveVitality(pmcData, info, sessionID);
-    // };
 }
 module.exports = {mod: new HIWL()}
 // ⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣀⣤⣤⣤⣤⣀⡀
