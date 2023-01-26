@@ -1,0 +1,12 @@
+{
+    "name": "hiwl",
+    "version": "1.9.8",
+    "main": "src/hiwl.js",
+    "license": "MIT",
+    "author": "MaxBIT",
+    "description": "Health Increases With Level",
+    "akiVersion": "*",
+    "devDependencies": {
+        "@types/node": "^18.11.18"
+    }
+}
