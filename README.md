@@ -1,7 +1,13 @@
 # HIWL
 Health Increases With Level
 
-# Description:
+## Summary
+- [Description](#Description)
+- [Install](#Install)
+- [Settings](#Settings)
+- [Delete](#Delete)
+
+## Description:
 
 In many games, bosses have a high level and a lot of HP, and a player of any level always has the same HP.
 
@@ -11,11 +17,11 @@ In many games, bosses have a high level and a lot of HP, and a player of any lev
 
 For example: You want the PMC's health to increase with the level, and Scav to be the Rambo.
 
-# Install:
+## Install:
 
 * Unpack the contents of the archive into the "EFT/user/mods/" directory.
 
-# Settings: In file hiwl.ts
+## Settings: In file hiwl.ts
 
 * enabledPmc - linear health multiplier PMC's. (true - enable, false - disable)
 
@@ -35,7 +41,7 @@ For example: You want the PMC's health to increase with the level, and Scav to b
 
 * enabledDebuffs - Debuffs. (true - enable, false - disable)
 
-# Delete:
+## Delete:
 
 1. exit the game.
 
