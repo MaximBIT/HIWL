@@ -147,7 +147,6 @@ class HIWL implements IPreAkiLoadMod, IPostDBLoadMod {
 
   private Mult(level: number): any
   {
-    this.logger.info(`Mult level ${level}`);
     if(level <= 10) { return 1 }
     if(level >= 11 && level <= 20) { return 2 }
     if(level >= 21 && level <= 30) { return 3 }
