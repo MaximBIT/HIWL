@@ -41,6 +41,8 @@ For example: You want the PMC's health to increase with the level, and Scav to b
 
 * enabledDebuffs - Debuffs. (true - enable, false - disable)
 
+* autoUpdate - automatic update of mod files. (true - enable, false - disable)
+
 ## Delete:
 
 1. exit the game.
