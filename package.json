@@ -5,5 +5,8 @@
     "license": "The Unlicense",
     "author": "MaxBIT",
     "description": "Health Increases With Level",
-    "akiVersion": "*"
+    "akiVersion": "*",
+    "devDependencies": {
+        "@types/node": "^18.11.18"
+    }
 }
