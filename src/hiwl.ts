@@ -6,6 +6,7 @@ import { StaticRouterModService } from "@spt-aki/services/mod/staticRouter/Stati
 import { ProfileHelper } from "@spt-aki/helpers/ProfileHelper";
 import { BodyPartsSettings, Effects } from "@spt-aki/models/eft/common/IGlobals";
 import { BodyPartsHealth } from "@spt-aki/models/eft/common/tables/IBotBase";
+import { PreAkiModLoader } from "@spt-aki/loaders/PreAkiModLoader";
 import { VFS } from "@spt-aki/utils/VFS";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
@@ -46,6 +47,7 @@ class HIWL implements IPreAkiLoadMod, IPostDBLoadMod {
   {
     const staticRMS = container.resolve<StaticRouterModService>("StaticRouterModService");
     const pHelp = container.resolve<ProfileHelper>("ProfileHelper");
+    const preAML = container.resolve<PreAkiModLoader>("PreAkiModLoader");
     const vfs = container.resolve<VFS>("VFS");
     const jsonUtil = container.resolve<JsonUtil>("JsonUtil");
     this.logger = container.resolve<ILogger>("WinstonLogger");
@@ -107,7 +109,7 @@ class HIWL implements IPreAkiLoadMod, IPostDBLoadMod {
           try
           {
             let bodyPP = pHelp.getPmcProfile(sessionID).Health.BodyParts;
-            vfs.writeFile(`${this.modPath}/reservefile.json`, bodyPP);
+            vfs.writeFile(`${preAML.getModPath("HIWL")}/reservefile.json`, jsonUtil.serialize(bodyPP, true));
             for(let eachPart in this.bodyPartsPmc && this.bodyPartsScav)
             {
               this.bodyPartsPmc[eachPart].Health.Current = this.bodyPart[eachPart].Default;
