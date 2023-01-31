@@ -21,7 +21,9 @@ For example: You want the PMC's health to increase with the level, and Scav to b
 
 * Unpack the contents of the archive into the "EFT/user/mods/" directory.
 
-## Settings: In file hiwl.ts
+## Settings:
+
+In file hiwl.ts
 
 * enabledPmc - linear health multiplier PMC's. (true - enable, false - disable)
 
