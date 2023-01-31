@@ -4,7 +4,7 @@ Health Increases With Level
 ## Summary
 - [Description](#Description)
 - [Install](#Install)
-- [Settings](#Settings: In file hiwl.ts)
+- [Settings](#Settings)
 - [Delete](#Delete)
 
 ## Description:
